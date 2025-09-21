@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - RuxOTP</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="RuxOTP Logo" class="logo">
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="admin.html">Admin</a>
+      <a href="login.html">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Admin Panel</h1>
+      <p>Manage users, OTP logs, and Twilio credentials.</p>
+
+      <form id="adminForm">
+        <label>Twilio SID</label>
+        <input type="text" id="sid">
+        <label>Twilio Auth Token</label>
+        <input type="text" id="auth">
+        <label>Twilio Number</label>
+        <input type="text" id="number">
+        <button type="submit">Update Credentials</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 RuxOTP. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById("adminForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Admin credentials will be updated in server environment.");
+    });
+  </script>
+</body>
+</html>
 
