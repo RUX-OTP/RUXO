@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - RuxOTP</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="RuxOTP Logo" class="logo">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="login.html">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Your Dashboard</h1>
+      <p>Send OTPs directly from your dashboard using Twilio.</p>
+
+      <form id="otpForm">
+        <label>Phone Number</label>
+        <input type="text" id="phone" placeholder="+234..." required>
+        <label>Message</label>
+        <input type="text" id="message" value="Your OTP is 123456" required>
+        <button type="submit">Send OTP</button>
+      </form>
+
+      <div id="status"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 RuxOTP. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById("otpForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const phone = document.getElementById("phone").value;
+      const message = document.getElementById("message").value;
+      const res = await fetch("/api/sendSMS", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({to: phone, message: message})
+      });
+      const data = await res.json();
+      document.getElementById("status").innerText = data.success ? "OTP sent successfully!" : "Error sending OTP.";
+    });
+  </script>
+</body>
+</html>
 
